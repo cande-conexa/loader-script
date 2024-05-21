@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack --config webpack.config.js && node src/build.js",
-    "test": "npx webpack"
+    "build": "npx webpack --config webpack.config.js && node src/build.js"
   },
   "keywords": [],
   "author": "",
