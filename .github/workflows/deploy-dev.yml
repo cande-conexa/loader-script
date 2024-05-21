@@ -18,12 +18,12 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm install
-
+        run: npm Install
+        
       - name: Set up .env file
-        run:|
-         echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" > .env
-         echo "APP_URL=${{ secrets.APP_URL }}" > .env
+        run: |
+          echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" > .env
+          echo "ANOTHER_ENV=${{ secrets.ANOTHER_ENV }}" >> .env
 
       - name: Build the project
         run: npm run build
