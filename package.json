@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node src/build.js"
+    "build": "npx webpack --config webpack.config.js && node src/build.js",
+    "test": "npx webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "replace-in-file": "^7.1.0",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   }
