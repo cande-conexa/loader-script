@@ -6,8 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const envVariables = {
-  "process.env.LOGIN_URL": process.env.LOGIN_URL,
-  "process.env.APP_URL": process.env.APP_URL,
+  "process.env.LOGIN_URL": process.env.LOGIN_URL || 'EMPTY_ENV',
+  "process.env.APP_URL": process.env.APP_URL || 'EMPTY_ENV',
 };
 
 // Rutas de los archivos
