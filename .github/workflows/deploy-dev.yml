@@ -21,8 +21,9 @@ jobs:
         run: npm install
 
       - name: Set up .env file
-        run: echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" > .env
-        run: echo "APP_URL=${{ secrets.APP_URL }}" > .env
+        run:|
+         echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" > .env
+         echo "APP_URL=${{ secrets.APP_URL }}" > .env
 
       - name: Build the project
         run: npm run build
