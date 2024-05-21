@@ -1,5 +1,4 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+ name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
 on:
   # Runs on pushes targeting the default branch
@@ -41,40 +40,27 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
       
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: "20"
-
-      # - name: Install dependencies
-      #   runs: npm install
-
-      # - name: Set up .env file
-      #   run: |
-      #     echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" > .env
-      #     echo "ANOTHER_ENV=${{ secrets.ANOTHER_ENV }}" >> .env
-
-      # - name: Build the project
-      #   run: npm run build dev
-
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js and install dependencies
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16'
           cache: 'npm'
-            - name: Set up .env file
+      - name: Set up .env file
         run: |
           echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" > .env
           echo "ANOTHER_ENV=${{ secrets.ANOTHER_ENV }}" >> .env
-    - run: npm install
-    - run: npm run build dev --if-present
 
-    # 👇 Store the dist folder
-    - uses: actions/upload-artifact@v3
-      with:
-        name: app-build
-        path: dist
+      - name: Install dependencies and build the project
+        run: |
+          npm install
+          npm run build dev --if-present
+
+      # Store the dist folder as an artifact
+      - name: Store the dist folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-build
+          path: dist
 
 
   # Deployment job
@@ -85,11 +71,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-         - name: Download build artifacts
+      - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: app-build
-      - run: ls dist
+      
+      # You can add more steps here for deployment if needed
