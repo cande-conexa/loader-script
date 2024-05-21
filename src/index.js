@@ -1,15 +1,16 @@
+// ENV CONFIG
+const envLogin = process.env.LOGIN_URL;
+const envApp = process.env.APP_URL;
+
 // cargar stylesheet
 const loadStyles = () => {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'src/styles.css';
+  link.href = `${envApp}/src/styles.css`;
   document.head.appendChild(link);
 };
 
 loadStyles();
-// const style = document.createElement('style');
-// style.innerHTML = styles;
-// document.head.appendChild(style);
 
 // append loader to body overlay
 const container = document.createElement('div');
@@ -19,7 +20,6 @@ container.innerHTML =
 document.body.appendChild(container);
 
 // COOKIES CONFIG
-const envLogin = process.env.LOGIN_URL;
 const cookiesString = document.cookie;
 
 // Cookies to object
