@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  LOGIN_URL = "https://example.com/login"
+  APP_URL = "hola.com"

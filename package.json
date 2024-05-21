@@ -1,15 +1,13 @@
 {
   "name": "loader-script",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Loader script for external usage",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx webpack"
+    "build": "npm run build-css && npm run build-js",
+    "build-css": "cp src/styles.css dist/styles.css",
+    "build-js": "node src/index.js > dist/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "css-loader": "^7.1.1",
     "dotenv": "^16.4.5",

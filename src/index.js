@@ -1,4 +1,5 @@
 // ENV CONFIG
+require('dotenv').config();
 const envLogin = process.env.LOGIN_URL;
 const envApp = process.env.APP_URL;
 
